@@ -16,6 +16,7 @@ def get_wufoo_data() -> dict:  # comment to test workflow
         sys.exit(-1)
 
     jsonresponse = response.json()
+    print(jsonresponse)
     return jsonresponse['Entries']
 
 
