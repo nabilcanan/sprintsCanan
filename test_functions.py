@@ -18,7 +18,7 @@ def test_wufoo_data_received():
 
 
 def test_database():
-    db_connection = sqlite3.connect('testdb.db.db')
+    db_connection = sqlite3.connect('wufoo_data.db')
     db_cursor = db_connection.cursor()
 
     main.write_wufoo_data()('pytest_db.db')
@@ -48,9 +48,7 @@ def test_database():
              "CreatedBy": "public",
              "DateUpdated": ",",
              "UpdatedBy": "None"}]
-
-    main.insert_db('testdb.db', 'test', data)
-
+            
 
 def test_db_entry(db_cursor, item):
     db_cursor.execute("SELECT * FROM entries WHERE EntryId=?", (item['EntryId'],))
