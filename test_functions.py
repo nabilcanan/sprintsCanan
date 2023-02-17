@@ -21,34 +21,30 @@ def test_database():
     db_connection = sqlite3.connect('wufoo_data.db')
     db_cursor = db_connection.cursor()
 
-    main.write_wufoo_data()('pytest_db.db')
-    data = [{"EntryId": "4",
-             "Field5": "Mr.",
-             "Field8": "David",
-             "Field9": "Johnson",
-             "Field11": "Doctor",
-             "Field12": "BestBuy",
-             "Field13": "davidjohnson@gmail.com",
-             "Field14": "davidjohnson.com",
-             "Field15": "1231231314",
-             "Field16": "Course Project",
-             "Field17": "Guest Speaker",
-             "Field18": "Site Visit",
-             "Field19": "Job Shadow",
-             "Field20": "Internships",
-             "Field21": "Career Panel",
-             "Field22": "Networking Event",
-             "Field216": "Summer 2022 (June 2022- August 2022)",
-             "Field217": "Fall 2022 (September 2022- December 2022)",
-             "Field218": "Spring 2023 (January 2023- April 2023)",
-             "Field219": "Summer 2023 (June 2023- August 2023)",
-             "Field220": "Other",
-             "Field316": "Yes",
-             "DateCreated": "2023-02-09 13:15:05",
-             "CreatedBy": "public",
-             "DateUpdated": ",",
-             "UpdatedBy": "None"}]
-            
+    db_cursor.execute("SELECT * FROM entries")
+    rows = db_cursor.fetchall()
+    assert rows[4] == (
+        ('5',
+         'Mr.',
+         'test',
+         'test',
+         'test',
+         'test.com',
+         'test12@gmail.com',
+         'test.com',
+         'test12@gmail.com',
+         'test12.com',
+         '1231331234',
+         'Course Project.Guest Speaker.Site Visit.Job Shadow.Internships.Career Panel, Networking Event '
+         ' Summer 2022 (June 2022- August 2022),Fall 2022 (September 2022- December '
+         '2022), Spring 2023 (January 2023- April 2023), Summer 2023 (June 2023- '
+         'August 2023),Other'
+         'No',
+         '2023-02-16 22:00:56',
+         'public',
+         '',
+         'None'))
+
 
 def test_db_entry(db_cursor, item):
     db_cursor.execute("SELECT * FROM entries WHERE EntryId=?", (item['EntryId'],))
