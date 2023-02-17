@@ -16,7 +16,7 @@ def get_wufoo_data() -> dict:  # comment to test workflow
         sys.exit(-1)
 
     jsonresponse = response.json()
-    print(jsonresponse)
+    ## print(jsonresponse)
     return jsonresponse['Entries']
 
 
@@ -25,11 +25,23 @@ def write_wufoo_data():
         db_connection = sqlite3.connect('wufoo_data.db')
         db_cursor = db_connection.cursor()
 
-        db_cursor.execute('''CREATE TABLE IF NOT EXISTS entries (Entry_Id text,Goes_By, First_Name text, 
-        Last_Name text, title text, job_type text,
-         email_address text , website text, phone_number text, 
-         opportunities text, time_period text, other_yes_box text,   
-         Date_Created text, Created_By text, Date_Updated text, Updated_By text)''')
+        db_cursor.execute('''CREATE TABLE IF NOT EXISTS entries 
+        (Entry_Id text, 
+        Goes_By text, 
+        First_Name text, 
+        Last_Name text, 
+        title text, 
+        job_type text,
+        email_address text , 
+        website text, 
+        phone_number text, 
+        opportunities text, 
+        time_period text, 
+        other_yes_box text,   
+        Date_Created text, 
+        Created_By text, 
+        Date_Updated text, 
+        Updated_By text)''')
 
     except sqlite3.Error as db_error:
         print(f'A Database Error has occurred: {db_error}')
@@ -51,9 +63,9 @@ def insert_database():
 
         for item in data:
             db_cursor.execute(
-                "INSERT INTO entries VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)",
+                "INSERT INTO entries VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
                 (item['EntryId'],
-                 item.get('EntryId', ''),
+                 ##item.get('EntryId', ''),
                  # goes by mr, ms ...
                  item.get('Field5', ''),
                  # First Name
