@@ -1,43 +1,46 @@
-import sys
+import tkinter as tk
+import sqlite3
 
-from PySide6.QtWidgets import QApplication, QWidget, QPushButton, QMessageBox
-from PySide6.QtGui import QCloseEvent
+# connect to database and fetch entries
+conn = sqlite3.connect('wufoo_data.db')
+c = conn.cursor()
+c.execute("SELECT * FROM entries")
+entries = c.fetchall()
 
+# create main window
+root = tk.Tk()
+root.title("Database Entries")
 
-class ExampleWindow(QWidget):
-    def __init__(self):
-        super().__init__()
+# create listbox to display entries
+listbox = tk.Listbox(root, width=100)
+listbox.pack(padx=100, pady=100)
 
-        self.setup()
-
-    def setup(self):
-        btn_quit = QPushButton('Force Quit', self)
-        btn_quit.clicked.connect(QApplication.instance().quit)
-        btn_quit.resize(btn_quit.sizeHint())
-        btn_quit.move(90, 100)
-
-        self.setGeometry(100, 100, 200, 150)
-        self.setWindowTitle('Window Example')
-
-        self.show()
-
-    def closeEvent(self, event: QCloseEvent):
-        reply = QMessageBox.question(self, 'Message', 'Are you sure you want to quit?',
-                                     QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
-
-        if reply == QMessageBox.Yes:
-            event.accept()
-        else:
-            event.ignore()
+# add entries to listbox
+for entry in entries:
+    listbox.insert(tk.END, entry[1][:30])  # display first 30 characters of entry
 
 
-def run():
-    app = QApplication(sys.argv)
+# create function to display complete entry data
+def show_entry(event):
+    # get selected entry
+    index = listbox.curselection()[0]
+    entry = entries[index]
 
-    ex = ExampleWindow()
+    # create new window to display complete entry data
+    top = tk.Toplevel(root)
+    top.title("Entry Details")
 
-    sys.exit(app.exec())
+    # display complete entry data
+    tk.Label(top, text="Name:").grid(row=0, column=0, sticky="w")
+    tk.Label(top, text=entry[1]).grid(row=0, column=1, sticky="w")
+    tk.Label(top, text="Email:").grid(row=1, column=0, sticky="w")
+    tk.Label(top, text=entry[2]).grid(row=1, column=1, sticky="w")
+    tk.Label(top, text="Message:").grid(row=2, column=0, sticky="w")
+    tk.Label(top, text=entry[3]).grid(row=2, column=1, sticky="w")
 
 
-if __name__ == '__main__':
-    run()
+# bind listbox selection to show_entry function
+listbox.bind("<<ListboxSelect>>", show_entry)
+
+# run main loop
+root.mainloop()
