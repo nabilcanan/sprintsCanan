@@ -65,7 +65,6 @@ def insert_database():
             db_cursor.execute(
                 "INSERT INTO entries VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
                 (item['EntryId'],
-                 ##item.get('EntryId', ''),
                  # goes by mr, ms ...
                  item.get('Field5', ''),
                  # First Name
@@ -108,7 +107,6 @@ def insert_database():
                            item.get('Field220', '')]),
                  # Yes Final Field
                  item.get('Field316', ''),
-
                  item.get('DateCreated'),
                  item.get('CreatedBy'),
                  item.get('DateUpdated'),
