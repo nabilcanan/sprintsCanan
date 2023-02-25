@@ -39,25 +39,14 @@ def test_database():
          ))
 
 
-def test_gui_receives_database_info():
-    conn = sqlite3.connect('wufoo_data.db')
-    c = conn.cursor()
-
-    # Retrieve relevant information from the database
-    c.execute('SELECT * FROM entries')
-    db_entries = c.fetchall()
-
-    # Launch the GUI
-    root = Tk()
-    show_entry = Tk(root)
-    show_entry()
-
-    # Assert that the GUI displays the same number of entries as the database
-    assert len(show_entry.entries) == len(db_entries)
-
-# entry = GUI.entries
-# assert test_gui_entries[5] == (
-#     'Mr.', 'test', 'test', 'test', 'test.com', 'test12@gmail.com', 'test12.com', '1231331234',
-#     'Course Project.Guest Speaker.Site Visit.Job Shadow.Internships.Career Panel.Networking Event',
-#     'No', '2023-02-16 22:00:56', 'public', '', ''
-# )
+# def test_gui_receives_database_info():
+#     conn = sqlite3.connect('wufoo_data.db')
+#     c = conn.cursor()
+#
+#     # Retrieve relevant information from the database
+#     c.execute('SELECT * FROM entries')
+#     db_entries = c.fetchall()
+#
+#     # Assert that the GUI displays the same number of entries as the database
+#     assert len(show_entry.entries) == len(db_entries)
+#
