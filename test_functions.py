@@ -1,8 +1,5 @@
 import sqlite3
-import json
-from urllib import response
 import main
-import pytest
 import GUI
 
 
