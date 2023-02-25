@@ -35,7 +35,7 @@ def write_wufoo_data():
         phone_number text,
         opportunities text,
         time_period text,
-        other_yes_box text, 
+        other_yes_box text,
         Date_Created text,
         Created_By text,
         Date_Updated text,
