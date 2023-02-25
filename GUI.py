@@ -1,7 +1,6 @@
 import tkinter as tk
 import sqlite3
 
-
 # connect to database and fetch entries
 conn = sqlite3.connect('wufoo_data.db')
 c = conn.cursor()
@@ -12,6 +11,8 @@ entries = c.fetchall()
 root = tk.Tk()
 root.geometry("800x500")
 root.title("Database Entries")
+title_label = tk.Label(root, text="Current Database Entries:", font=("Times New Roman", 22))
+title_label.pack(pady=20)
 
 listbox = tk.Listbox(root, width=300)
 listbox.pack(padx=100, pady=100, fill=tk.BOTH, expand=True)
