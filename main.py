@@ -23,22 +23,22 @@ def write_wufoo_data():
         db_connection = sqlite3.connect('wufoo_data.db')
         db_cursor = db_connection.cursor()
 
-        db_cursor.execute('''CREATE TABLE IF NOT EXISTS entries 
-        (Entry_Id text, 
-        Goes_By text, 
-        First_Name text, 
-        Last_Name text, 
-        title text, 
+        db_cursor.execute('''CREATE TABLE IF NOT EXISTS entries
+        (Entry_Id text,
+        Goes_By text,
+        First_Name text,
+        Last_Name text,
+        title text,
         job_type text,
-        email_address text , 
-        website text, 
-        phone_number text, 
-        opportunities text, 
-        time_period text, 
-        other_yes_box text,   
-        Date_Created text, 
-        Created_By text, 
-        Date_Updated text, 
+        email_address text,
+        website text,
+        phone_number text,
+        opportunities text,
+        time_period text,
+        other_yes_box text, 
+        Date_Created text,
+        Created_By text,
+        Date_Updated text,
         Updated_By text)''')
 
     except sqlite3.Error as db_error:
