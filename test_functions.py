@@ -49,4 +49,4 @@ def test_database():
 #
 #     # Assert that the GUI displays the same number of entries as the database
 #     assert len(show_entry.entries) == len(db_entries)
-#
+#     not complete
