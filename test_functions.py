@@ -3,7 +3,7 @@ import main
 import GUI
 
 
-# here IS A CHANGE asdawd
+# here IS A CHANGE
 
 def test_wufoo_data_received():
     data = main.get_wufoo_data()
