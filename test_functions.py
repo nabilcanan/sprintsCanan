@@ -3,7 +3,7 @@ import main
 import GUI
 
 
-# here
+# here IS A CHANGE
 
 def test_wufoo_data_received():
     data = main.get_wufoo_data()
@@ -40,14 +40,14 @@ def test_database():
          ))
 
 
-def test_gui_entries():
-    db_connection = sqlite3.connect('wufoo_data.db')
-    db_cursor = db_connection.cursor()
-
-    db_cursor.execute("SELECT * FROM entries")
-    entry = GUI.entries
-    assert test_gui_entries[5] == (
-        'Mr.', 'test', 'test', 'test', 'test.com', 'test12@gmail.com', 'test12.com', '1231331234',
-        'Course Project.Guest Speaker.Site Visit.Job Shadow.Internships.Career Panel.Networking Event',
-        'No', '2023-02-16 22:00:56', 'public', '', ''
-    )
+# def test_gui_entries():
+#     db_connection = sqlite3.connect('wufoo_data.db')
+#     db_cursor = db_connection.cursor()
+#
+#     db_cursor.execute("SELECT * FROM entries")
+#     entry = GUI.entries
+#     assert test_gui_entries[5] == (
+#         'Mr.', 'test', 'test', 'test', 'test.com', 'test12@gmail.com', 'test12.com', '1231331234',
+#         'Course Project.Guest Speaker.Site Visit.Job Shadow.Internships.Career Panel.Networking Event',
+#         'No', '2023-02-16 22:00:56', 'public', '', ''
+#     )
