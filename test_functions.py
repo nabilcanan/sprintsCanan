@@ -1,6 +1,6 @@
 from GUI import *
 import main
-
+# removed
 
 def test_wufoo_data_received():
     data = main.get_wufoo_data()
