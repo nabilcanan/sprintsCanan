@@ -1,5 +1,3 @@
-import sqlite3
-from tkinter import Tk
 from GUI import *
 import main
 
